@@ -1,0 +1,43 @@
+/* PLL player branding — watermark + accent overrides for the Brightcove Prism player */
+
+.video-js .vjs-control-bar {
+  background-color: rgba(14, 14, 14, 0.88);
+}
+
+.video-js .vjs-play-progress,
+.video-js .vjs-volume-level {
+  background-color: #ffcb06;
+}
+
+/* PLL wordmark, top-left, never intercepts clicks */
+.video-js::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 88px;
+  height: 36px;
+  background: url("https://premierlacrosseleague.com/wp-content/uploads/2026/01/2026_pll_site_header_logo.webp") no-repeat left center;
+  background-size: contain;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.96;
+}
+
+/* keep the watermark readable on bright frames */
+.video-js::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 128px;
+  height: 64px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  z-index: 2;
+  pointer-events: none;
+}
+
+.vjs-has-started .video-js::after,
+.video-js.vjs-has-started::after {
+  opacity: 0.96;
+}
